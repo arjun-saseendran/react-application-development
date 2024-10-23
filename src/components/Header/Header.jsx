@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useRef } from "react";
 import "./Header.css";
 import { searchValue } from "../../features/searchSlice";
@@ -13,8 +13,7 @@ function Header() {
   const inputValue = useRef();
   const dispatch = useDispatch();
   const count =  useSelector(state => state.cartProducts.cartCount)
-  const navigate = useNavigate()
-  const handleRedirect = () => navigate('/cart')
+  
 
   return (
     <Navbar expand="lg" className="header">

@@ -17,7 +17,8 @@ function ViewProduct() {
   }, []);
 
   return (
-    <Container className="d-flex justify-content-center">
+    <Container className="d-flex justify-content-center align-items-center flex-column">
+      <h1 className="text-white text-center mt-5">Product Details</h1>
       <Row className="m-5">
         <Card
           style={{ background: "#b7e0ff", width: "400px" }}

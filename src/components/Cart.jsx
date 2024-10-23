@@ -6,8 +6,9 @@ function Cart() {
     const cartProducts = useSelector(state => state.cartProducts.cartProducts)
   return (
     <Container>
-      <Row>
-        <Table striped bordered hover>
+        <h1 className="text-white text-center m-5">Cart</h1>
+      <Row className="vh-100 mt-5">
+        <Table striped bordered>
           <thead>
             <tr>
               <th></th>
