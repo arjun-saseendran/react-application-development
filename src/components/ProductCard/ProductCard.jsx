@@ -1,8 +1,12 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import './ProductCard.css'
+import { useSelector } from "react-redux";
 
 function ProductCard() {
+    const products = useSelector((state => state.products.products))
+    console.log(products);
+    
   return (
     <Card className="product-card">
       <Card.Img variant="top" src="holder.js/100px180" />
