@@ -3,15 +3,18 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import "./Header.css";
-import { searchValue } from "../../features/searchProductSlice";
-import { useDispatch } from "react-redux";
+import { searchValue } from "../../features/searchSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Header() {
   const inputValue = useRef();
   const dispatch = useDispatch();
+  const count =  useSelector(state => state.cartProducts.cartCount)
+  const navigate = useNavigate()
+  const handleRedirect = () => navigate('/cart')
 
   return (
     <Navbar expand="lg" className="header">
@@ -33,13 +36,7 @@ function Header() {
               Account
             </Link>
             <Link to={"/cart"} className="nav-link text-white">
-              Cart
-            </Link>
-            <Link to={"/orders"} className="nav-link text-white">
-              Orders
-            </Link>
-            <Link to={"/settings"} className="nav-link text-white">
-              Settings
+              Cart <span className="badge bg-dark rounded-pill">{count}</span>
             </Link>
           </Nav>
           <Form className="d-flex">

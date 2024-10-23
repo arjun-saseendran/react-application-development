@@ -7,14 +7,14 @@ import "./ProductCard.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {addToCart} from "../../features/cartSlice";
 
 function ProductCard() {
   const [products, setProducts] = useState([]);
-  let searchProduct = useSelector(
-    (state) => state.searchProduct.searchProduct.price
-  );
-  searchProduct = parseInt(searchProduct);
+  const dispatch = useDispatch();
+  let searchPrice = useSelector((state) => state.searchPrice.searchPrice);
+  searchPrice = parseInt(searchPrice);
 
   useEffect(() => {
     axios
@@ -23,13 +23,13 @@ function ProductCard() {
       .catch((error) => console.log(error));
   }, [products]);
 
-  if (searchProduct && products) {
+  if (searchPrice && products) {
     const searchProducts = products.filter(
-      (product) => product.price < searchProduct
+      (product) => product.price < searchPrice
     );
     return (
       <Container>
-        <Row className="mt-5">
+        <Row className="mt-5 vh-100">
           {searchProducts.map((product) => (
             <Col xs={12} sm={6} md={4} xl={3} className="mb-4" key={product.id}>
               <Card className="product-card" style={{ background: "#b7e0ff" }}>
@@ -53,21 +53,13 @@ function ProductCard() {
                     ${product.price}
                   </Card.Text>
                   <Button
-                    variant="outline-dark m-1"
-                    style={{
-                      backgroundColor: "#0b192c",
-                      color: "white",
-                    }}
+                    variant="dark m-1"
+                    onClick={() => dispatch(addToCart(product))}
                   >
                     Add to cart
                   </Button>
                   <Link to={`/view-product/${product.id}`}>
-                    <Button
-                      variant="outline-dark m-1"
-                      style={{ backgroundColor: "#0b192c", color: "white" }}
-                    >
-                      View Product
-                    </Button>
+                    <Button variant="dark m-1">View Product</Button>
                   </Link>
                 </Card.Body>
               </Card>
@@ -81,7 +73,7 @@ function ProductCard() {
       <Container>
         <Row className="mt-5">
           {products.map((product) => (
-            <Col xs={12} sm={6} md={4} xl={3} className="mb-4" key={product.id}>
+            <Col xm={12} sm={6} md={4} xl={3} className="mb-4" key={product.id}>
               <Card className="product-card" style={{ background: "#b7e0ff" }}>
                 <Card.Img
                   variant="top"
@@ -103,21 +95,13 @@ function ProductCard() {
                     ${product.price}
                   </Card.Text>
                   <Button
-                    variant="outline-dark m-1"
-                    style={{
-                      backgroundColor: "#0b192c",
-                      color: "white",
-                    }}
+                    variant="dark m-1"
+                    onClick={() => dispatch(addToCart(product))}
                   >
                     Add to cart
                   </Button>
                   <Link to={`/view-product/${product.id}`}>
-                    <Button
-                      variant="outline-dark m-1"
-                      style={{ backgroundColor: "#0b192c", color: "white" }}
-                    >
-                      View Product
-                    </Button>
+                    <Button variant="dark m-1">View Product</Button>
                   </Link>
                 </Card.Body>
               </Card>

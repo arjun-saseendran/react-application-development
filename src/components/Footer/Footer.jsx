@@ -1,10 +1,11 @@
 import React from 'react'
+import './Footer.css'
 
 function Footer() {
   return (
     <div
-      className="w-100 mt-5 text-white"
-      style={{ padding: "20px", background: "#0b192c", width: "100%" }}
+      className="w-100 mt-5 text-white footer"
+      
     >
       Copyright &copy; 2024 arjunsaseendran.
     </div>
