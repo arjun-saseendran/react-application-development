@@ -7,19 +7,19 @@ import Root from '../src/routes/root.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { store } from "./app/store";
 import { Provider } from "react-redux";
+import ViewProduct from './components/ViewProduct/ViewProduct.jsx';
 
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element: <Root/>,
+    path: "/",
+    element: <Root />,
     children: [
-      {path: '/',
-        element: <App/>
-      }
-    ]
-  }
-])
+      { path: "/", element: <App /> },
+      { path: "/view-product/:productId", element: <ViewProduct /> },
+    ],
+  },
+]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

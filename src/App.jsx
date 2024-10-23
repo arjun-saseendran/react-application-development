@@ -4,7 +4,7 @@ import ProductCard from './components/ProductCard/ProductCard'
 function App() {
   return (
    <main>
-    <ProductCard/>
+   <ProductCard/>
    </main>
   )
 }

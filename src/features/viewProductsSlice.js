@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  viewProduct: {},
+  viewProduct: {
+    image: "",
+    title: "",
+    description: "",
+    price: 0,
+  },
 };
 
 const viewProductSlice = createSlice({
@@ -9,11 +14,10 @@ const viewProductSlice = createSlice({
   initialState,
   reducers: {
     viewProductDetails: (state, action) => {
-      const { image, title, description, price } = action.payload;
-      state.viewProduct = { image, title, description, price };
+      state.viewProduct = action.payload;
     },
   },
 });
 
 export default viewProductSlice.reducer;
-export const viewProductDetails = viewProductSlice.actions;
+export const { viewProductDetails } = viewProductSlice.actions;

@@ -4,9 +4,15 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 import "./Header.css";
+import { searchValue } from "../../features/searchProductSlice";
+import { useDispatch } from "react-redux";
 
 function Header() {
+  const inputValue = useRef();
+  const dispatch = useDispatch();
+
   return (
     <Navbar expand="lg" className="header">
       <Container fluid>
@@ -42,8 +48,14 @@ function Header() {
               placeholder="Search"
               className="me-2 serach-bar"
               aria-label="Search"
+              ref={inputValue}
             />
-            <Button variant="outline-light">Search</Button>
+            <Button
+              variant="outline-light"
+              onClick={() => dispatch(searchValue(inputValue.current.value))}
+            >
+              Search
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>
